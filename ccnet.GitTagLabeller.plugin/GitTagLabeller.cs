@@ -77,7 +77,8 @@ namespace CcNet.Labeller
                 GitExecute(workingDir, "checkout -q -f " + Branch);
 
             // get output from "git describe"
-            string s = GitExecute(workingDir, "describe");
+            string s = GitExecute(workingDir, "describe --match \"v[0-9]*\"");
+
             if (s == null)
                 throw new InvalidDataException("No tag found");
 
